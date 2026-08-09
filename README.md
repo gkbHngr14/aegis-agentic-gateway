@@ -1,6 +1,6 @@
 # 🛡️ Project Aegis: Zero-Trust Agentic Security Gateway
 
-[![Aegis Chaos CI](https://github.com/gkbHngr14/beast-agentic-platform/actions/workflows/aegis_chaos_gate.yml/badge.svg)](https://github.com/gkbHngr14/beast-agentic-platform/actions)
+[![Aegis Chaos CI](https://github.com/gkbHngr14/aegis-agentic-gateway/actions/workflows/aegis_chaos_gate.yml/badge.svg)](https://github.com/gkbHngr14/aegis-agentic-gateway/actions)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Code Style: Black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
@@ -58,6 +58,33 @@
 ⚡️ Automated Chaos Release Gate (agenticChaosTester)
 Aegis includes an automated, deterministic 4-Vector Red-Team Chaos Engine (tests/chaos/test_aegis_chaos.py) that acts as an automated release gate in CI/CD pipelines.
 
+AgenticChaosTester is an adversarial resilience-testing framework designed to exercise the security and failure boundaries of agentic AI systems.
+
+Rather than limiting testing to conventional unit/integration tests, it deliberately injects malformed tool calls, authorization violations, prompt-injection attempts, protocol failures and latency conditions to verify that the agent gateway fails closed and preserves tenant/security boundaries.
+
+AgenticChaosTester
+        │
+        ├── Prompt Injection
+        ├── Tool Abuse
+        ├── Tenant Boundary Violation
+        ├── Schema / Protocol Attack
+        ├── Timeout / Latency
+        └── Guardrail Failure
+                 │
+                 ▼
+          Aegis Gateway
+                 │
+        ┌────────┴────────┐
+        ▼                 ▼
+     BLOCK             FALLBACK
+        │                 │
+        └────────┬────────┘
+                 ▼
+          Test Assertion
+                 │
+                 ▼
+             CI/CD Gate
+
 # Execute the full 4-Vector Chaos Suite locally (typical execution: ~0.07s)
 python3 -m pytest tests/chaos/test_aegis_chaos.py -v
 
@@ -70,8 +97,8 @@ Redis / Dragonfly (Optional; system defaults to sub-millisecond in-memory engine
 Installation
 
 # Clone the repository
-git clone [https://github.com/gkbHngr14/beast-agentic-platform.git](https://github.com/gkbHngr14/beast-agentic-platform.git)
-cd beast-agentic-platform
+git clone [https://github.com/gkbHngr14/aegis-agentic-gateway.git](https://github.com/gkbHngr14/aegis-agentic-gateway.git)
+cd aegis-agentic-gateway
 
 # Install dependencies
 pip install pytest pytest-asyncio
